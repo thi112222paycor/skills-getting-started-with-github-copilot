@@ -40,3 +40,8 @@ Thumbs.db
 .actrc*
 
 __pycache__/
+# Node and .NET build outputs
+**/node_modules/
+**/dist/
+**/bin/
+**/obj/

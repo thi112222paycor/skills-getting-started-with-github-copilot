@@ -1,47 +1,99 @@
-# Getting Started with GitHub Copilot
+# Task Manager Full-Stack Demo
 
-_Get started using GitHub Copilot in less than an hour._
+This repository now includes a mock full-stack task manager application with:
 
-## Welcome
+- **Frontend:** React + TypeScript + Vite
+- **Backend:** ASP.NET Core Web API (.NET 10)
+- **Database:** EF Core InMemory provider
 
-- **Who is this for**: Developers at any experience level looking to accelerate their code workflow.
-- **What you'll learn**: The different ways to interact with Copilot to explain, write, plan, and develop code.
-- **What you'll build**: You will guide Copilot to update Mergington High School's extracurricular activities website.
-- **Prerequisites**:
-  - Skills exercise: [Introduction to GitHub](https://github.com/skills/introduction-to-github)
-  - Familiarity with [VS Code](https://code.visualstudio.com/)
-  - Basic coding principles
-- **How long**: This exercise takes less than one hour to complete.
+## Project structure
 
-In this exercise, you will:
+- `/frontend` - React application with mock authentication, protected routes, dashboard, and task CRUD UI
+- `/backend` - ASP.NET Core Web API with controllers, services, repositories, DTOs, AutoMapper, validation, logging, and Swagger
 
-1. Use a preconfigured Codespace to run VS Code in your browser.
-1. Learn different interaction options to develop and plan with GitHub Copilot.
-1. Use Copilot to summarize and review your pull request.
+## Features
 
-### How to start this exercise
+- Mock login and registration
+- Protected frontend routes
+- Task CRUD operations
+- Seeded in-memory data at startup
+- Swagger UI for API documentation
+- Clean separation between controllers, services, and repositories
+- DTO validation with Data Annotations
+- Centralized exception handling and logging
 
-Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
+## Demo credentials
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=getting-started-with-github-copilot&owner=%40me&name=skills-getting-started-with-github-copilot&description=Exercise:+Get+started+using+GitHub+Copilot&visibility=public)
+Use the seeded account to sign in immediately:
 
-<details>
-<summary>Having trouble? 🤷</summary><br/>
+- **Email:** `student@mergington.edu`
+- **Password:** `Pass123!`
 
-When copying the exercise, we recommend the following settings:
+## Run the backend
 
-- For owner, choose your personal account or an organization to host the repository.
+```bash
+cd backend
+dotnet restore
+dotnet run
+```
 
-- We recommend creating a public repository, since private repositories will use Actions minutes.
-   
-If the exercise isn't ready in 20 seconds, please check the [Actions](../../actions) tab.
+Backend URLs:
 
-- Check to see if a job is running. Sometimes it simply takes a bit longer.
+- API base: `http://localhost:5152/api`
+- Swagger UI: `http://localhost:5152/swagger`
 
-- If the page shows a failed job, please submit an issue. Nice, you found a bug! 🐛
+## Run the frontend
 
-</details>
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
----
+Frontend URL:
 
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+- App: `http://localhost:5173`
+
+## Production build checks
+
+```bash
+cd backend
+dotnet build
+
+cd ../frontend
+npm run lint
+npm run build
+```
+
+## API overview
+
+### Auth
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+
+### Tasks
+
+Send the signed-in user email in the `X-User-Email` header.
+
+- `GET /api/tasks`
+- `GET /api/tasks/{id}`
+- `POST /api/tasks`
+- `PUT /api/tasks/{id}`
+- `DELETE /api/tasks/{id}`
+
+## Switching from mock DB to SQL Server later
+
+The backend is structured so the persistence layer can be replaced without changing controller or service behavior.
+
+When moving to SQL Server:
+
+1. Replace `UseInMemoryDatabase(...)` in `/backend/Program.cs`
+2. Add a real SQL Server connection string in configuration
+3. Keep the existing repository/service/controller structure intact
+4. Add EF Core migrations for the SQL Server provider
+
+## Notes
+
+- The in-memory database is reseeded each time the backend restarts.
+- Registration data is intentionally mock/demo-only and stored only while the API process is running.

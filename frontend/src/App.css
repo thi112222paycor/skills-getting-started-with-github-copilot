@@ -1,0 +1,291 @@
+:root {
+  color: #e2e8f0;
+  background: #020617;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(14, 165, 233, 0.18), transparent 32%),
+    linear-gradient(180deg, #020617 0%, #0f172a 100%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: #38bdf8;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.92);
+  border-right: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.content {
+  padding: 2rem;
+}
+
+.nav-links {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.nav-links a {
+  padding: 0.85rem 1rem;
+  border-radius: 0.9rem;
+  text-decoration: none;
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.75);
+  transition: 0.2s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: white;
+  background: rgba(14, 165, 233, 0.28);
+}
+
+.auth-card,
+.panel {
+  width: min(100%, 1100px);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+}
+
+.auth-card {
+  margin: 6vh auto;
+}
+
+.page-section {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.two-column-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.page-header,
+.panel-header,
+.task-row,
+.task-title-row,
+.inline-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.panel-header,
+.task-row {
+  align-items: flex-start;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(30, 41, 59, 0.74);
+}
+
+.summary-card span,
+.muted,
+.helper-text,
+small {
+  color: #94a3b8;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 2rem;
+  color: #f8fafc;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+label {
+  display: grid;
+  gap: 0.45rem;
+  color: #e2e8f0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.6);
+  color: #f8fafc;
+  padding: 0.9rem 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  border: none;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.secondary-button,
+.ghost-button,
+.danger-button {
+  background: rgba(51, 65, 85, 0.9);
+}
+
+.danger-button {
+  background: rgba(190, 24, 93, 0.85);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.task-list {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.task-list li {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.compact li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.priority-low {
+  background: rgba(34, 197, 94, 0.18);
+  color: #86efac;
+}
+
+.priority-medium {
+  background: rgba(250, 204, 21, 0.18);
+  color: #fde68a;
+}
+
+.priority-high {
+  background: rgba(248, 113, 113, 0.18);
+  color: #fecaca;
+}
+
+.complete {
+  background: rgba(59, 130, 246, 0.2);
+  color: #bfdbfe;
+}
+
+.error-banner,
+.status-banner {
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+}
+
+.error-banner {
+  background: rgba(127, 29, 29, 0.4);
+  color: #fecaca;
+}
+
+.status-banner {
+  background: rgba(30, 41, 59, 0.88);
+}
+
+@media (max-width: 960px) {
+  .app-shell,
+  .two-column-layout,
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .panel-header,
+  .task-row,
+  .inline-fields,
+  .compact li {
+    flex-direction: column;
+  }
+}
